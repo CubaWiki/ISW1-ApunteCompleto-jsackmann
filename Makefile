@@ -9,5 +9,5 @@ Ainforme:
 .PHONY: clean
 
 clean: 
-	rm -rf IngSoft.pdf *.toc *.log *.aux *.snm *.vrb *.nav *.out *.fdb_latexmk *.maf *.mtc *.mtc0
+	rm -rf *.toc *.log *.aux *.snm *.vrb *.nav *.out *.fdb_latexmk *.maf *.mtc *.mtc0
 
