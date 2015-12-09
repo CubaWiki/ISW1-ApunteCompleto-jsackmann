@@ -598,7 +598,7 @@ Este tipo de objetivos tiene dos representaciones gráficas posibles:
 	\item Tabular: se grafican todos los objetivos blandos en una sola tabla. Las columnas representan los objetivos blandos mientras que las filas son las distintas alternativas. En la intersección entre una alternativa y un objetivo blando, se representa su ``medición'' (con `$+$' o `$-$').
 \end{itemize}~\newline
 
-Un objetivo se clasifica de \textbf{medible} si se puede medir. Idealmente, todos los objetivos deberían ser medibles. Los objetivos de comportamiento son trivialmente medibles (pues tienen la función de comprobación). Sin embargo, para los objetivos blandos, es necesario que haya un \textit{criterio de comparación} y para los no funcionales debe haber un \textit{criterio de aceptación}.
+Un objetivo se clasifica de \textbf{medible} si se puede medir. Idealmente, todos los objetivos deberían ser medibles. Los objetivos de comportamiento son trivialmente medibles (pues tienen la función de comprobación). Sin embargo, para los objetivos blandos, es necesario que haya un \textit{criterio de comparación} y para los de comportamiento debe haber un \textit{criterio de aceptación}.
 
 Estas elecciones de criterios no siempre son triviales: puede haber objetivos para los cuales el concepto de medición sea difuso, que los \textit{stakeholders} no sean específicos, etc. Más aún, existe el problema de que generalmente, aún los objetivos que son medibles no los puede medir uno mismo; sólo los pueden medir los \textit{stakeholders}.
 
@@ -660,7 +660,7 @@ Los diagramas de casos de uso sirven para definir claramente el alcance de la m�
 Los diagramas de casos de uso constan de los siguientes	componentes:
 \begin{itemize}
 	\item \textbf{Actor}: se define como un conjunto de entidades concretas clasificados de acuerdo a una característica común a ellos. Representa a un tipo de usuario, abstrayendo al usuario real (que puede ser personas, sistemas, dispositivos, softwares, máquinas, etc). El nombre del actor describe su rol desempeñado. Si bien no es uno a uno, existe una correlación entre los agentes y los actores del modelo de objetivos (un agente puede estar modelado por varios actores, sea simultáneamente, alternadamente o algo así).
-	\item \textbf{Máquina}: se representa con un rectángulo. Dentro de ella viven los casos de uso que se levan a cabo dentro de ella.
+	\item \textbf{Máquina}: se representa con un rectángulo. Dentro de ella viven los casos de uso que se llevan a cabo dentro de ella.
 	\item \textbf{Caso de uso}: especifica una o más secuencias de acciones que el sistema puede llevar a cabo interactuando con sus actores. Describe un conjunto de escenarios. Su nombre suele expresarse en gerundio. Consideremos una ejecución como un conjunto de tuplas \textbf{(a,o,a')}, que debe interpretarse como que el actor $a$ ejecuta la operación $o$ sobre el actor $a'$. Entonces un caso de uso puede verse como un conjunto de estas secuencias que verifica que antes de la primer tupla vale la precondición y después de la última vale la postcondición.
 \end{itemize}
 
