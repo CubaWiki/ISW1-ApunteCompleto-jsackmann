@@ -732,7 +732,7 @@ Para su representación existen diversas técnicas, con distintos niveles de com
 \begin{itemize}
 	\item \textbf{Diccionario / Glosario}: es una lista de clases con sus atributos y relaciones. Tiene poca estructura y es complicado de analizar/validar. Se usa lenguaje natural para explicar la denotación en detalle.
 	\item \textbf{Diagrama de Entidad-Relación (DER)}: usa un lenguaje gráfico que provee estructura. Muy usado para bases de datos.
-	\item \textbf{Diagrama de clases}.
+	\item \textbf{Diagrama de clases}: extiende DER con varias características, como \textit{herencia}, \textit{modificadores}, etc.
 \end{itemize}
 
 \subsubsection{Definiciones}
@@ -778,7 +778,7 @@ En los diagramas de clases se emplea una notación gráfica particular para deno
 
 Las clases conceptuales se denotan con un rectángulo cuyo título es el nombre de la clase y, abajo, se listan sus atributos. Las relaciones entre clases conceptuales se notan con líneas uniendo los distintos rectángulos, sobre las que se escriben las características de la relación (nombre y cantidad).
 
-Junto con los diagrmas de objetos, los diagramas de clases se usan para modelar el dominio del problema y el de la solución.
+Junto con los diagramas de objetos, los diagramas de clases se usan para modelar el dominio del problema y el de la solución.
 
 \begin{center}
 	\includegraphics[scale=0.5]{Conceptual.png}
@@ -911,7 +911,7 @@ donde
 \end{itemize}
 
 \subsubsubsection{Semántica}
-Semánticamente, una descripción de modelo conceptual usando OCL está dada en los mismos términos que una descripción de modelo conceptual: conjuntos de objetos con atributos y las relaciones entre sí. La diferencia es que el OCL es notablemente más expresivo, con lo que podemos \textbf{recortar} modelos inválidos con más presición.
+Semánticamente, una descripción de modelo conceptual usando OCL está dada en los mismos términos que una descripción de modelo conceptual: conjuntos de objetos con atributos y las relaciones entre sí. La diferencia es que el OCL es notablemente más expresivo, con lo que podemos \textbf{recortar} modelos inválidos con más precisión.
 
 \subsubsubsection{Recorte o Prunning}
 La semántica de \textbf{recorte} o \textbf{prunning} define que a medida que agregamos restricciones y especificaciones el espacio de interpretaciones \underline{válidas} se va achicando (justamente, lo estamos recortando). Tanto el modelo de operaciones (con pre- y post-condiciones) como el de objetivos (mediante objetivos de comportamiento que deban cumplirse) utilizan semántica de prunning.
