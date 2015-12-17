@@ -1004,9 +1004,9 @@ Los modelos de comportamiento tienen una semántica \textbf{generativa} (induce 
 Se categorizan en dos:
 \begin{itemize}
 	\item \textbf{Basados en interacciones}: es una visión de traza global (visión omnisciente) en la que selecciono un conjunto de agentes y describo todas las posibles interacciones entre sí. No ``se para'' en ningún agente en particular. Su foco está en describir cómo es la interacción entre varias entidades. 
-\end{itemize}
 
 	\item \textbf{Basados en estados}: es una visión centrada en un agente en particular, y describe su comportamiento completo. Es una visión local, sesgada a un único agente. 
+\end{itemize}
 
 \subsubsection{Diagramas de Secuencia}
 Son una de las posibles herramientas \textbf{basada en interacciones} para representar gráficamente y trabajar con modelos basados en interacciones. Provienen de las Telco. Su scope permite describir escenarios de intercambios de mensajes estableciendo posibles ordenamientos para los eventos. Poseen una semántica de órdenes parciales. Se componen por intermedio de un grafo.
@@ -1362,7 +1362,7 @@ Sea $P = (S,L,\Delta,q)$ una \textit{LTS}. Decimos que $P$ \textbf{transita} o \
 		\hline
 		\textbf{Concurrencia} &  \textbf{Paralelismo}\\ \hline \hline
 		Procesamiento lógicamente simultáneo & Procesamiento físicamente simultáneo\\ \hline
-		No necesariamente implica múltiples unida	des de procesamiento\footnote{Si hay una sola unidad de procesamiento, es necesario utilizar ejecución \textit{interleaved}.} & Involucra múltiples unidades de procesamiento\\ \hline
+		No necesariamente implica múltiples unidades de procesamiento\footnote{Si hay una sola unidad de procesamiento, es necesario utilizar ejecución \textit{interleaved}.} & Involucra múltiples unidades de procesamiento\\ \hline
 	\end{tabular}
 \end{center}
 \end{savenotes}
@@ -1444,9 +1444,9 @@ Toda máquina de estados no determinística puede convertirse en una determinís
  \end{center}
 \end{figure}
 
-Claramente querríamos que estos dos \textit{LTS} fueran equivalentes (porque los estados tienen semántica nula), pero sus grafos subyacentes no son isomorfos.
+Claramente querríamos que estos dos \textit{LTS} fueran equivalentes (porque los estados tienen semántica nula), pero sus grafos subyacentes no son isomorfos, por lo que esta definición no alcanza.
 
-\subsubsubsection{Propuesta 2: Isomorfismo sin estados alcanzables}
+\subsubsubsection{Propuesta 2: Isomorfismo sin estados no alcanzables}
 ``Dos \textit{LTS} son equivalentes si al quitar sus estados no alcanzables son isomorfos''. Esta propuesta falla como se puede ver en el siguiente contraejemplo:
 \begin{center}
 	\includegraphics[scale=0.5]{Isomor.png}
@@ -1574,7 +1574,7 @@ O sea, equivalencia por trazas pide igualdad de trazas; mientras que equivalenci
 Cómo se vio en su definición, los \textit{LTS} vienen equipados con una etiqueta especial, $\tau$, que representa una acción interna, no observable\footnote{Una acción es \textbf{observable}, si puede ser usada para comprobar la respuesta del sistema frente a un estímulo.} y no controlable\footnote{Una acción es \textbf{controlable}, si puede ser usada para estimular al sistema.} desde el mundo exterior. Es muy utilizada para:
 \begin{itemize}
 	\item Impedir sincronización externa (por ejemplo, si dos máquinas tienen \textit{timeout}, tenderían a sincronizarse. Con $\tau$ eso no pasa).
-	\item Abstraer acciones interna, reduciendo la complejidad.
+	\item Abstraer acciones internas, reduciendo la complejidad.
 \end{itemize}
 
 \subsubsection{Bisimulación considerando $\tau$}
@@ -1648,7 +1648,7 @@ Los \textit{LTS} tienen serios problemas de expresividad a la hora de trabajar c
 \end{itemize}
 
 \subsubsection{Semántica}
-Proveer de semántica a los autómatas temporizados se lo hace en términos otra notación conocida: el \textit{LTS}. Es por esto que se dice que la semántica de \textit{TA} (Timed-Automata) \textbf{hereda} una relación de bisimulación y una relación de composición en paralelo.
+Proveer de semántica a los autómatas temporizados se lo hace en términos de otra notación conocida: el \textit{LTS}. Es por esto que se dice que la semántica de \textit{TA} (Timed-Automata) \textbf{hereda} una relación de bisimulación y una relación de composición en paralelo.
 
 \begin{center}
 	\includegraphics[scale=0.6]{AuTemp.png}
@@ -1662,11 +1662,11 @@ Estas transiciones se dividen en dos subtipos:
 \begin{itemize}
 	\item \textbf{Temporales}: el paso de un tiempo $t$ es representado por una transición etiquetada por $t$.
 	\begin{center}
-		$\displaystyle \frac{Is[v+t], 0\leq t}{(s,v)\rightarrow t (s,v+t)}$
+		$\displaystyle \frac{Is[v+t], 0\leq t}{(s,v)\flecha{t} (s,v+t)}$
 	\end{center}
 	\item \textbf{Instantáneas}: dadas por la ejecución de una acción $e$. La transición lleva la etiqueta $e$.
 	\begin{center}
-		$\displaystyle \frac{<s,e,\Psi,\alpha,s'>\in A, \Psi[v] \text{ y } \alpha(v)=v'}{(s,v)\rightarrow e (s',v')}$
+		$\displaystyle \frac{<s,e,\Psi,\alpha,s'>\in A, \Psi[v] \text{ y } \alpha(v)=v'}{(s,v)\flecha{e} (s',v')}$
 	\end{center}
 \end{itemize}
 
@@ -1833,7 +1833,7 @@ Una de las mayores dificultades es encontrar un \textbf{conjunto de tests} aprop
 \subsubsection{Test de requerimientos no funcionales}
 \underline{Ejemplos}:
 \begin{itemize}
-	\item \textbf{Test de seguridad}: se intentan violar elementos de seguridad del programa, tales como disponibilidad, integridad y confidencialidad de datos o servicios.
+	\item \textbf{Test de seguridad}: se intentan validar elementos de seguridad del programa, tales como disponibilidad, integridad y confidencialidad de datos o servicios.
 	\item \textbf{Test de performance}: se intentan validar los tiempos de acceso, ejecución y respuesta del sistema.
 	\item \textbf{Test de stress}: se intenta validar el uso del sistema en sus límites de capacidad y verificando sus reacciones más allá de los mismos.
 	\item \textbf{Test de usabilidad}.
@@ -1947,7 +1947,7 @@ Para identificar categorías se usa:
 	\item Ciclo de Vida de las entidades del modelo de datos.
 \end{itemize}
 
-El método de caterogy partiton se aplica a cualquier descripción de funcionalidad (formal, semiformal o informal) en el que se conozcan bien sus requerimientos (pues es necesario utilizarlos para planificar el testing). Esto genera preguntas de incompletitud, ambigüedad, inconsistencia, e incorrección en un momento en que es ``fácil'' corregir requerimientos. No hay una sola forma de hacerlo: dependiendo de cómo se aplique el método se obtendrán distintos conjuntos de casos de test.
+El método de category partition se aplica a cualquier descripción de funcionalidad (formal, semiformal o informal) en el que se conozcan bien sus requerimientos (pues es necesario utilizarlos para planificar el testing). Esto genera preguntas de incompletitud, ambigüedad, inconsistencia, e incorrección en un momento en que es ``fácil'' corregir requerimientos. No hay una sola forma de hacerlo: dependiendo de cómo se aplique el método se obtendrán distintos conjuntos de casos de test.
 
 \subsubsubsection{Técnicas de partición de dominio}
 Son técnicas usadas para la identificación de categorías. Aparecen de manera más o menos clara los parámetros (implícitos y explícitos), su casuística, la relación entre ellos, etc. Por ejemplo, en los casos de uso hay escenarios distintos dependiendo de valores de parámetros o de acciones decididas por el actor. Son parámetros candidatos con sus categorías y elecciones.
