@@ -1462,7 +1462,7 @@ En este caso, querríamos estos dos \textit{LTS} fueran equivalentes, pero sus g
 \end{center}
 
 %%NUEVO-COBY%%
-En este ejemplo no deberíamos querere ver ambas máquinas como iguales porque la de la izquierda es no-determinista y la derecha es determinista.
+En este ejemplo no deberíamos querer ver ambas máquinas como iguales porque la de la izquierda es no-determinista y la derecha es determinista.
 %%FIN-NUEVO-COBY%%
 
 
@@ -1990,7 +1990,7 @@ Esta heurística logra una complejidad de $O(n*k*o)$ en lugar de $O(2^n)$ dónde
 \subsubsubsection{$n$-wise partition y OATS}
 La técnica de \textbf{$n$-wise partition} permite testear las interacciones entre $n$-uplas de parámetros (factores) independientes de una manera muy económica. Sin embargo, para poder aplicar esta técnica es necesario que valga una hipótesis bastante fuerte: si hay un bug que resulta de la interacción de dos parámetros sin importar el resto, necesariamente lo voy a encontrar. El bug \textbf{sí} o \textbf{sí} se tiene que revelar con una combinación de dos parámetros y \textbf{no} tiene que molestar el resto de los parámetros.
 
-Además, en el caso en el cual una combinación de dos parámetros es intrínsecamente imposible tengo un problema porque si lo elimino, estoy perdiendo información de más porque todas los los otros pares que tengo en ese caso los pierdo.
+Además, en el caso en el cual una combinación de dos parámetros es intrínsecamente imposible tengo un problema porque si lo elimino, estoy perdiendo información de más porque todos los otros pares que tengo en ese caso los pierdo.
 
 \textbf{Orthogonal Array Testing Strategy (OATS)} es un formato para listar casos de test que permite aplicar cómodamente $n$-wise partition. Los casos de test se listan una tabla en la que las columnas se corresponden con los factores y las filas los casos de test.
 
@@ -2110,6 +2110,9 @@ El problema de branch covering es que una decisión puede estar creada por varia
 Tener en cuenta que hay semántica de cortocircuito: se evalúan las condiciones sólo cuando es necesario. Para cubrir condiciones hay que efectivamente evaluar todas en sus dos posibles valores booleanos, sin perder cuidado de la semántica de cortocircuito.
 %%FIN-NUEVO-COBY%%
 
+\subsubsubsection{Cubrimiento de caminos}
+\textit{Todo camino del flujo de control del programa debe ejercitarse alguna vez}. Equivale a cubrir todos los caminos del flowgraph, por lo que implica tanto cubrimiento de decisiones como de sentencias. Puede volverse excesivamente costoso (p.ej., en el caso de loops infinitos, habrían infinitos caminos) y no garantiza nada, pero sí es de los criterios de testing más completos (implica branches y statements, aunque no condition).
+
 \subsubsubsection{MC/DC: Modified Condition/Decision Coverage}
 \textit{Exige que}:
 \begin{itemize}
@@ -2129,7 +2132,7 @@ Cuando $n$ crece, esta fórmula converge a:
 	$\displaystyle P(m) = 1-\left(\frac{1}{2^m}\right)$
 \end{center}
 
-\subsubsubsection{All-Uses}
+\subsubsubsection{Data Flow Testing}
 Definiciones:
 \begin{itemize}
 	\item Una sentencia que guarda un valor en la posición de memoria de una variable, crea una \textbf{definición}.
@@ -2140,7 +2143,7 @@ Definiciones:
 	\end{itemize}
 \end{itemize}
 
-Se procede con el criterio de la siguiente manera:
+El \textbf{def-use flowgraph} de un programa para una de sus variables, $x$, es su \textit{flowgraph} anotado de la siguiente forma: 
 \begin{enumerate}
 	\item Por cada \textit{definición} de $x$, el nodo asociado se etiqueta con una definición de $x$.
 	\item Por cada \textit{c-uso}, el nodo asociado se etiqueta con un uso de $x$.
@@ -2169,7 +2172,7 @@ Existen numerosos criterios estructurales basados en flujo de datos:
 	\end{itemize}
 \end{multicols}
 
-Sin embargo el más usado es el cubrimiento \textbf{all-uses} que exige que \textit{para cada variable en el programa, deben ejercitarse toda las asociaciones entre cada definición y toda uso de la misma (tal que esa definición esté activa)}. Equivale a cubrir todas las DUAs del programa.
+Sin embargo el más usado es el cubrimiento \textbf{all-uses} que exige que \textit{para cada variable en el programa, deben ejercitarse todas las asociaciones entre cada definición y todo uso de la misma (tal que esa definición esté activa)}. Equivale a cubrir todas las DUAs del programa.
 
 \begin{center}
 	\fbox{All-uses $\Rightarrow$ Branch covering}
@@ -2328,7 +2331,7 @@ Existen tres casos para lo que puede sucederle a una test-suite cuando debe ser 
 \subsection{Introducción}
 Hasta ahora consideramos a los sistemas como una transformación de entradas en salidas: como funciones. Sin embargo, no es cierto que todos los sistemas se comporten de este modo, lo que puede llevar a problemas si intentamos utilizar la noción tradicional de corrección funcional en esos casos. Es por esto que hablamos de \textbf{conformidad}, que establece formalmente cuál es la relación entre la especificación y la implementación. Es necesario revisar no sólo los casos de test, sino también los datos (que pueden, por ejemplo, ser secuencias de interacciones).
 
-Si yo tengo el sistema, esto implementa algún tipo de comportamiento que puedo modelarlo como una máquina de estados. La idea es descubrir si el comportamiento de esta máquina de estado \textbf{conforma a} (se condice con) el comportamiento de la máquina de la máquina de estados teórica que se deduce de la implementación.
+Si yo tengo el sistema, esto implementa algún tipo de comportamiento que puedo modelarlo como una máquina de estados. La idea es descubrir si el comportamiento de esta máquina de estado \textbf{conforma a} (se condice con) el comportamiento de la máquina de estados teórica que se deduce de la implementación.
 
 \ig{0.5}{Conformance.png}
 
